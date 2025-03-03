@@ -1,12 +1,13 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
 import UserMenu from "./User-menu";
+import { cheekUser } from "@/lib/CheekUser";
 
-export default function Header() {
+export default async function Header() {
+    await cheekUser();
+
   return (
     <header className="container mx-auto">
       <nav className="flex items-center justify-between py-6 px-4">
@@ -16,10 +17,10 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <Link href="/project/create">
-          <Button variant="destructive" className="flex items-center gap-2">
-            <PenBox size={18}/>
-            <span>Create Project</span>
-          </Button>
+            <Button variant="destructive" className="flex items-center gap-2">
+              <PenBox size={18} />
+              <span>Create Project</span>
+            </Button>
           </Link>
 
           <SignedOut>
