@@ -4,15 +4,24 @@ import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
 import UserMenu from "./User-menu";
 import { cheekUser } from "@/lib/CheekUser";
+import UserLoading from "./UserLoading";
+import Image from "next/image";
 
 export default async function Header() {
-    await cheekUser();
+  await cheekUser();
 
   return (
     <header className="container mx-auto">
-      <nav className="flex items-center justify-between py-6 px-4">
+      <nav className="flex items-center justify-between py-6 px-10">
         <Link href="/">
-          <h1 className="text-3xl text-purple-800 font-bold">TaskFlow</h1>
+          {/* <h1 className="text-3xl text-purple-800 font-bold">TaskFlow</h1> */}
+          <Image
+            src="/logo2.png"
+            alt="logo2"
+            width={200}
+            height={52}
+            className="h-8 w-full object-cover"
+          />
         </Link>
 
         <div className="flex items-center gap-4">
@@ -34,6 +43,7 @@ export default async function Header() {
           </SignedIn>
         </div>
       </nav>
+      {/* <UserLoading /> */}
     </header>
   );
 }
